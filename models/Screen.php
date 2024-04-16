@@ -54,7 +54,7 @@ class Screen {
      * Draw a pixel with a color and 2 points $x and $y
      * Check if $x and $y are in the matrix 
      */
-    public function drawPixel($x, $y, $color): void
+    public function drawPixel(int $x, int $y, string $color): void
     {
         if ($y < count($this->pixels) && $y >= 0 && $x < count($this->pixels[0]) && $x >= 0) {
             $this->pixels[$y][$x] = $color; 
@@ -67,7 +67,7 @@ class Screen {
      * a = delta y / delta x
      * b = y1 - a x1
      */
-    public function drawLine($x1, $y1, $x2, $y2, $color): void
+    public function drawLine(int $x1, int $y1, int $x2, int $y2, string $color): void
     {
         if ($x1 > $x2) {
             $x = $x1;
@@ -114,6 +114,25 @@ class Screen {
                 $this->drawPixel($x, $y, $color); 
             }
         }
+    }
+
+    /**
+     * Draw a polygon 
+     */     
+    public function drawPolygon(array $arrayPoints, string $color): void
+    {
+        // Line to the points
+        for ($i = 0; $i < count($arrayPoints) -1; $i++) {
+            $point1 = $arrayPoints[$i]; 
+            $point2 = $arrayPoints[$i + 1]; 
+            $this->drawLine($point1->x, $point1->y, $point2->x, $point2->y, $color); 
+        }
+
+        // For the last line: link from the last point to the first
+        $lastPoint = count($arrayPoints) -1; 
+        $point1 = $arrayPoints[$lastPoint]; 
+        $point2 =  $arrayPoints[0];
+        $this->drawLine($point1->x, $point1->y, $point2->x, $point2->y, $color); 
     }
 
 }

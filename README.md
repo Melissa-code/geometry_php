@@ -13,3 +13,5 @@
 
 ## Draw a polygon 
 
+[Draw_polygon](https://imgur.com/P6vsHdl)
+
