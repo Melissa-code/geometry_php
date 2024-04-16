@@ -4,6 +4,12 @@
 
 ## Draw a pixel 
 
-![draw_a_pixel](https://imgur.com/a/XQWvilY)
+[Draw_pixel](https://imgur.com/kfdvFsd)
 
 ## Draw a straight line 
+
+[Draw_line](https://imgur.com/RSVMQ9K)
+[Draw_lines](https://imgur.com/hRzfRvi)
+
+## Draw a polygon 
+
