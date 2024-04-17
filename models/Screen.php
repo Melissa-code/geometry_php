@@ -177,4 +177,21 @@ class Screen {
         }
     }
 
+    /**
+     * Draw a column of losanges 
+     */
+    public function drawLosangesVertical(int $x, int $y, int $l, int $h, int $n, int $space, string $color): void
+    {
+        for ($i = 0; $i < $n; $i++) {
+            $arrayPoints = [
+                new Point($x, $y), 
+                new Point($x + $l/2, $y - $h/2), 
+                new Point($x + $l, $y), 
+                new Point($x + $l/2, $y + $h/2)
+            ]; 
+            $this->drawLosange($arrayPoints, $color); 
+            $y += $h + $space; 
+        }
+    }
+
 }

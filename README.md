@@ -24,3 +24,4 @@
 
 [Draw_line_losanges](https://imgur.com/lxzYfi1)
 
+[Draw_column_losanges](https://imgur.com/h8jWWNN)

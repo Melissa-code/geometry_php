@@ -80,8 +80,8 @@
         $y = $h/2; 
         $n = 200/$l; 
 
-        $screen->drawLosangesHorizontal($x + $l/4, $y, $l/2, $h/2, $n, $l/2, "#FF0000"); 
-       
+        //$screen->drawLosangesHorizontal($x + $l/4, $y, $l/2, $h/2, $n, $l/2, "#FF0000"); 
+        $screen->drawLosangesVertical($x + $l/4, $y, $l/2, $h/2, $n, $l/2, "#000FF0"); 
 
         $screen->show();
     ?> 
