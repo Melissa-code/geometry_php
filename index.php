@@ -46,12 +46,16 @@
          * Draw a polygon 
          * params ($arrayPoints, $color)
          */
-        /*
-        $arrayPoints = [new Point(10, 40), new Point(50, 80), new Point(40, 130)];
-        $screen->drawPolygon($arrayPoints, '#FFFFFF');
-*/
         $arrayPoints = [new Point(10, 40), new Point(50, 80), new Point(40, 130), new Point(20, 70)];
         $screen->drawPolygon($arrayPoints, '#FFFFFF');
+
+        $arrayPoints = [new Point(100, 100), new Point(100, 90), new Point(160, 70), new Point(160, 100)];
+        $screen->drawPolygon($arrayPoints, '#FFFF00');
+        
+        $arrayPoints = [new Point(60, 50), new Point(60, 90), new Point(50, 100), new Point(50, 100), new Point(80, 100), new Point(80, 60)];
+        $screen->drawPolygon($arrayPoints, '#FF0000');
+
+
 
         $screen->show();
     ?> 

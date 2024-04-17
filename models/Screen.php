@@ -67,72 +67,73 @@ class Screen {
      * a = delta y / delta x
      * b = y1 - a x1
      */
-    public function drawLine(int $x1, int $y1, int $x2, int $y2, string $color): void
+    public function drawLine($x1, $y1, $x2, $y2, $color)
     {
+        //y=ax+b
+        // a = delta y / delta x
+        // b = y1-a x1
         if ($x1 > $x2) {
             $x = $x1;
-            $x1 = $x2; 
-            $x2 = $x; 
+            $x1 = $x2;
+            $x2 = $x;
             $y = $y1;
             $y1 = $y2;
-            $y2 = $y; 
+            $y2 = $y;
         }
-        if ($x1 === $x2) {
-            if ($y1 > $y2) {
-                $t = $y1;
-                $y1 = $y2;
-                $y2 = $t; 
+        if ($x1==$x2)
+        {
+            if ($y1>$y2)
+            {
+                $t=$y1;
+                $y1=$y2;
+                $y2=$t;
             }
-            for ($i = $y1; $i <= $y2; $i++) {
-                $this->drawPixel($x1, $i, $color); 
-            return; 
-            }
+            for($i = $y1;$i<=$y2;$i++)
+                $this->drawPixel($x1,$i,$color);
+            return;
         }
-        $a = ($y2 - $y1) / ($x2 - $x1); 
-        $b = $y1 - $a * $x1; 
-        $goy = 0; 
-        if (abs($y2 -$y1) > abs($x2 - $x1)) {
-            $goy = 1; 
+        $a = ($y2 - $y1) / ($x2 - $x1);
+        $b = $y1 - $a * $x1;
+        $goy = 0;
+        if (abs($y2 - $y1) > abs($x2 - $x1)) {
+            $goy = 1;
             if ($y1 > $y2) {
-                $x = $x1; 
-                $x1 = $x2; 
-                $x2 = $x; 
-                $y = $y1; 
+                $x = $x1;
+                $x1 = $x2;
+                $x2 = $x;
+                $y = $y1;
                 $y1 = $y2;
-                $y2= $y; 
+                $y2 = $y;
             }
         }
 
-        if ($goy === 0) {
-            for ($x = $x1; $x < $x2; $x++) {
-                $y = intval($a * $x + $b); 
-                $this->drawPixel($x, $y, $color); 
+        if ($goy == 0)
+            for ($x = $x1; $x <= $x2; $x++) {
+                $y = intval($a * $x + $b);
+                $this->drawPixel($x, $y, $color);
             }
-        } else {
-            for ($y = $y1; $y < $y2; $y++) {
-                $x = intval(($y - $b) / $a); 
-                $this->drawPixel($x, $y, $color); 
+        else
+            for ($y = $y1; $y <= $y2; $y++) {
+                $x = intval(($y - $b) / $a);
+                $this->drawPixel($x, $y, $color);
             }
-        }
     }
 
     /**
      * Draw a polygon 
-     */     
-    public function drawPolygon(array $arrayPoints, string $color): void
+     */
+    public function drawPolygon($arrayPoints, $color)
     {
-        // Line to the points
-        for ($i = 0; $i < count($arrayPoints) -1; $i++) {
-            $point1 = $arrayPoints[$i]; 
-            $point2 = $arrayPoints[$i + 1]; 
-            $this->drawLine($point1->x, $point1->y, $point2->x, $point2->y, $color); 
+        for ($i = 0; $i < count($arrayPoints) - 1; $i++) {
+            $p1 = $arrayPoints[$i];
+            $p2 = $arrayPoints[$i + 1];
+            $this->drawLine($p1->x, $p1->y, $p2->x, $p2->y, $color);
         }
 
-        // For the last line: link from the last point to the first
-        $lastPoint = count($arrayPoints) -1; 
-        $point1 = $arrayPoints[$lastPoint]; 
-        $point2 =  $arrayPoints[0];
-        $this->drawLine($point1->x, $point1->y, $point2->x, $point2->y, $color); 
+        // connection 1er et dern point
+        $dernier = count($arrayPoints) - 1;
+        $p1 = $arrayPoints[$dernier];
+        $p2 = $arrayPoints[0];
+        $this->drawLine($p1->x, $p1->y, $p2->x, $p2->y, $color);
     }
-
 }
