@@ -64,9 +64,25 @@
          * Draw a losange
          * params ($arrayPoints, $color)
          */
+        /*
         $arrayPoints = [new Point(40, 10), new Point(20, 20), new Point(40, 30), new Point(60, 20)];
         $screen->drawLosange($arrayPoints, '#FFFF00');
-        
+        */
+
+
+        /**
+         * Draw a line of losanges 
+         * params ($x, $y, $l, $h, $n, $space ($l/2), $color) 
+         */
+        $l = 40;
+        $h = 20;
+        $x = 0;
+        $y = $h/2; 
+        $n = 200/$l; 
+
+        $screen->drawLosangesHorizontal($x + $l/4, $y, $l/2, $h/2, $n, $l/2, "#FF0000"); 
+       
+
         $screen->show();
     ?> 
 

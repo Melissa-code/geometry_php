@@ -18,3 +18,9 @@
 
 [Draw_polygons](https://imgur.com/eF53nyA)
 
+## Draw a losange 
+
+[Draw_losange](https://imgur.com/4VwkbEp)
+
+[Draw_line_losanges](https://imgur.com/lxzYfi1)
+

@@ -159,4 +159,22 @@ class Screen {
         $p2 = $arrayPoints[0];
         $this->drawLine($p1->x, $p1->y, $p2->x, $p2->y, $color);
     }
+
+    /**
+     * Draw a line of losanges 
+     */
+    public function drawLosangesHorizontal(int $x, int $y, int $l, int $h, int $n, int $space, string $color): void
+    {
+        for ($i = 0; $i < $n; $i++) {
+            $arrayPoints = [
+                new Point($x, $y), 
+                new Point($x + $l/2, $y - $h/2), 
+                new Point($x + $l, $y), 
+                new Point($x + $l/2, $y + $h/2)
+            ]; 
+            $this->drawLosange($arrayPoints, $color); 
+            $x += $h + $space; 
+        }
+    }
+
 }
