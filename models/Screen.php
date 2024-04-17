@@ -67,11 +67,8 @@ class Screen {
      * a = delta y / delta x
      * b = y1 - a x1
      */
-    public function drawLine($x1, $y1, $x2, $y2, $color)
+    public function drawLine(int $x1, int $y1, int $x2, int $y2, string $color)
     {
-        //y=ax+b
-        // a = delta y / delta x
-        // b = y1-a x1
         if ($x1 > $x2) {
             $x = $x1;
             $x1 = $x2;
@@ -80,16 +77,15 @@ class Screen {
             $y1 = $y2;
             $y2 = $y;
         }
-        if ($x1==$x2)
-        {
-            if ($y1>$y2)
-            {
-                $t=$y1;
-                $y1=$y2;
-                $y2=$t;
+        if ($x1 === $x2) {
+            if ($y1 > $y2) {
+                $t = $y1;
+                $y1 = $y2;
+                $y2 = $t;
             }
-            for($i = $y1;$i<=$y2;$i++)
-                $this->drawPixel($x1,$i,$color);
+            for ($i = $y1; $i <= $y2; $i++) {
+                $this->drawPixel($x1, $i, $color);
+            }
             return;
         }
         $a = ($y2 - $y1) / ($x2 - $x1);
@@ -106,33 +102,60 @@ class Screen {
                 $y2 = $y;
             }
         }
-
-        if ($goy == 0)
+        if ($goy === 0) {
             for ($x = $x1; $x <= $x2; $x++) {
                 $y = intval($a * $x + $b);
                 $this->drawPixel($x, $y, $color);
             }
-        else
+        }
+        else {
             for ($y = $y1; $y <= $y2; $y++) {
                 $x = intval(($y - $b) / $a);
                 $this->drawPixel($x, $y, $color);
             }
+        }   
     }
 
     /**
      * Draw a polygon 
      */
-    public function drawPolygon($arrayPoints, $color)
+    public function drawPolygon(array $arrayPoints, string $color): void
     {
+        // the polygon must have at least 3 points
+        if (count($arrayPoints) < 3) {
+            echo 'Impossible de dessiner un polygone. Veuillez saisir au moins 3 nouveaux points!'; 
+            return;
+        }
+
         for ($i = 0; $i < count($arrayPoints) - 1; $i++) {
             $p1 = $arrayPoints[$i];
             $p2 = $arrayPoints[$i + 1];
             $this->drawLine($p1->x, $p1->y, $p2->x, $p2->y, $color);
         }
 
-        // connection 1er et dern point
-        $dernier = count($arrayPoints) - 1;
-        $p1 = $arrayPoints[$dernier];
+        // connection between the first and the last point
+        $last = count($arrayPoints) - 1;
+        $p1 = $arrayPoints[$last];
+        $p2 = $arrayPoints[0];
+        $this->drawLine($p1->x, $p1->y, $p2->x, $p2->y, $color);
+    }
+
+    /**
+     * Draw a losange 
+     */
+    public function drawLosange(array $arrayPoints, string $color): void
+    {
+        if (count($arrayPoints) < 4) {
+            echo 'Impossible de dessiner un losange. Veuillez saisir au moins 4 nouveaux points!'; 
+            return;
+        }
+        for ($i = 0; $i < count($arrayPoints) - 1; $i++) {
+            $p1 = $arrayPoints[$i];
+            $p2 = $arrayPoints[$i + 1];
+            $this->drawLine($p1->x, $p1->y, $p2->x, $p2->y, $color);
+        }
+        $last = count($arrayPoints) - 1;
+        $p1 = $arrayPoints[$last];
         $p2 = $arrayPoints[0];
         $this->drawLine($p1->x, $p1->y, $p2->x, $p2->y, $color);
     }

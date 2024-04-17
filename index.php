@@ -31,6 +31,7 @@
          */
         //$screen->drawPixel(100, 80, '#000000'); // in the middle of the screen lightgrey
         
+
         /**
          * Draw a line 
          * params ($x1, $y1, $x2, $y2, $color)
@@ -42,10 +43,12 @@
         $screen->drawLine(100, 0, 101, 160, '#000FFF'); // Vertical line
         */
 
+
         /**
          * Draw a polygon 
          * params ($arrayPoints, $color)
          */
+        /*
         $arrayPoints = [new Point(10, 40), new Point(50, 80), new Point(40, 130), new Point(20, 70)];
         $screen->drawPolygon($arrayPoints, '#FFFFFF');
 
@@ -54,9 +57,16 @@
         
         $arrayPoints = [new Point(60, 50), new Point(60, 90), new Point(50, 100), new Point(50, 100), new Point(80, 100), new Point(80, 60)];
         $screen->drawPolygon($arrayPoints, '#FF0000');
+        */
+        
 
-
-
+        /**
+         * Draw a losange
+         * params ($arrayPoints, $color)
+         */
+        $arrayPoints = [new Point(40, 10), new Point(20, 20), new Point(40, 30), new Point(60, 20)];
+        $screen->drawLosange($arrayPoints, '#FFFF00');
+        
         $screen->show();
     ?> 
 
